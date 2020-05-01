@@ -13,20 +13,10 @@ protected:
     sf::Sprite sprite;
     bool isFlipped;
 public:
-    RectObject(std::string file_name, sf::Vector2f p) {
-        if(!tex.loadFromFile(resourcePath() + file_name)) {
-            return EXIT_FAILURE;
-        }
-        sprite.setTexture(tex);
-        pos = p;
-        sprite.setPosition(pos);
-        size.x = tex.getSize().x;
-        size.y = tex.getSize().y;
-        isFlipped = false;
-    }
     
+    RectObject(std::string file_name, sf::Vector2f p);
     // Moves the player based on the vector's distance
-    void move(sf::Vector2f distance) { sprite.move(distance); }
+    virtual void move( sf::Vector2f distance) { sprite.move(distance); }
     
     void getLength() { return size.x; }
     
@@ -40,21 +30,11 @@ public:
     
     int getY() { return sprite.getPosition().y; }
     
-    int getX() {
-         if(isFlipped == true)
-             return this->getLeft();
-         else
-             return this->getRight();
-    }
-    
+    int getX();
     int getRight() { return sprite.getPosition().x + size.x; }
-
     int getLeft() { return sprite.getPosition().x; }
-
     int getTop() { return sprite.getPosition().y; }
-
     int getBottom() { return sprite.getPosition().y + size.y; }
-
     void setPos(sf::Vector2f newPos) { sprite.setPosition(newPos); }
     
     sf::Vector2f getPos() { return pos; }

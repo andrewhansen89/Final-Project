@@ -20,7 +20,6 @@
 		D0F8CC3D245A1D1A001B20F6 /* bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0F8CC3B245A1D1A001B20F6 /* bullet.cpp */; };
 		D0F8CC40245A1D34001B20F6 /* rectObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0F8CC3E245A1D34001B20F6 /* rectObj.cpp */; };
 		D0F8CC43245A2410001B20F6 /* platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0F8CC41245A2410001B20F6 /* platform.cpp */; };
-		D0F8CC46245A2420001B20F6 /* background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0F8CC44245A2420001B20F6 /* background.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +43,6 @@
 		D0F8CC3F245A1D34001B20F6 /* rectObj.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rectObj.hpp; sourceTree = "<group>"; };
 		D0F8CC41245A2410001B20F6 /* platform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = platform.cpp; sourceTree = "<group>"; };
 		D0F8CC42245A2410001B20F6 /* platform.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = platform.hpp; sourceTree = "<group>"; };
-		D0F8CC44245A2420001B20F6 /* background.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = background.cpp; sourceTree = "<group>"; };
-		D0F8CC45245A2420001B20F6 /* background.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = background.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +88,6 @@
 				D0F8CC3F245A1D34001B20F6 /* rectObj.hpp */,
 				D0F8CC41245A2410001B20F6 /* platform.cpp */,
 				D0F8CC42245A2410001B20F6 /* platform.hpp */,
-				D0F8CC44245A2420001B20F6 /* background.cpp */,
-				D0F8CC45245A2420001B20F6 /* background.hpp */,
 			);
 			path = BattleRoyale;
 			sourceTree = "<group>";
@@ -219,7 +214,6 @@
 				D065355D2453714600EA8575 /* ResourcePath.mm in Sources */,
 				D0F8CC3A245A1D0C001B20F6 /* player.cpp in Sources */,
 				D0F8CC43245A2410001B20F6 /* platform.cpp in Sources */,
-				D0F8CC46245A2420001B20F6 /* background.cpp in Sources */,
 				D0F8CC3D245A1D1A001B20F6 /* bullet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
