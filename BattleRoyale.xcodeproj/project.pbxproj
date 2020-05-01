@@ -9,10 +9,18 @@
 /* Begin PBXBuildFile section */
 		D065355D2453714600EA8575 /* ResourcePath.mm in Sources */ = {isa = PBXBuildFile; fileRef = D065355C2453714600EA8575 /* ResourcePath.mm */; };
 		D06535602453714600EA8575 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D065355F2453714600EA8575 /* main.cpp */; };
-		D06535632453714600EA8575 /* cute_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D06535622453714600EA8575 /* cute_image.jpg */; };
-		D06535652453714600EA8575 /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = D06535642453714600EA8575 /* nice_music.ogg */; };
-		D06535672453714600EA8575 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D06535662453714600EA8575 /* sansation.ttf */; };
-		D06535692453714600EA8575 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D06535682453714600EA8575 /* icon.png */; };
+		D06535772453715900EA8575 /* Bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = D06535702453715900EA8575 /* Bullet.png */; };
+		D06535782453715900EA8575 /* Soldier.png in Resources */ = {isa = PBXBuildFile; fileRef = D06535712453715900EA8575 /* Soldier.png */; };
+		D06535792453715900EA8575 /* Platform-Full.png in Resources */ = {isa = PBXBuildFile; fileRef = D06535722453715900EA8575 /* Platform-Full.png */; };
+		D065357A2453715900EA8575 /* GamescreenGimp.xcf in Resources */ = {isa = PBXBuildFile; fileRef = D06535732453715900EA8575 /* GamescreenGimp.xcf */; };
+		D065357B2453715900EA8575 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = D06535742453715900EA8575 /* Background.png */; };
+		D065357C2453715900EA8575 /* Platform-Mid.png in Resources */ = {isa = PBXBuildFile; fileRef = D06535752453715900EA8575 /* Platform-Mid.png */; };
+		D065357D2453715900EA8575 /* Platform-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = D06535762453715900EA8575 /* Platform-Small.png */; };
+		D0F8CC3A245A1D0C001B20F6 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0F8CC38245A1D0C001B20F6 /* player.cpp */; };
+		D0F8CC3D245A1D1A001B20F6 /* bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0F8CC3B245A1D1A001B20F6 /* bullet.cpp */; };
+		D0F8CC40245A1D34001B20F6 /* rectObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0F8CC3E245A1D34001B20F6 /* rectObj.cpp */; };
+		D0F8CC43245A2410001B20F6 /* platform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0F8CC41245A2410001B20F6 /* platform.cpp */; };
+		D0F8CC46245A2420001B20F6 /* background.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0F8CC44245A2420001B20F6 /* background.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,10 +29,23 @@
 		D065355C2453714600EA8575 /* ResourcePath.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePath.mm; sourceTree = "<group>"; };
 		D065355E2453714600EA8575 /* ResourcePath.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourcePath.hpp; sourceTree = "<group>"; };
 		D065355F2453714600EA8575 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		D06535622453714600EA8575 /* cute_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = cute_image.jpg; path = ../cute_image.jpg; sourceTree = "<group>"; };
-		D06535642453714600EA8575 /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = nice_music.ogg; path = ../nice_music.ogg; sourceTree = "<group>"; };
-		D06535662453714600EA8575 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sansation.ttf; path = ../sansation.ttf; sourceTree = "<group>"; };
-		D06535682453714600EA8575 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		D06535702453715900EA8575 /* Bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bullet.png; sourceTree = "<group>"; };
+		D06535712453715900EA8575 /* Soldier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Soldier.png; sourceTree = "<group>"; };
+		D06535722453715900EA8575 /* Platform-Full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Platform-Full.png"; sourceTree = "<group>"; };
+		D06535732453715900EA8575 /* GamescreenGimp.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GamescreenGimp.xcf; sourceTree = "<group>"; };
+		D06535742453715900EA8575 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Background.png; sourceTree = "<group>"; };
+		D06535752453715900EA8575 /* Platform-Mid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Platform-Mid.png"; sourceTree = "<group>"; };
+		D06535762453715900EA8575 /* Platform-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Platform-Small.png"; sourceTree = "<group>"; };
+		D0F8CC38245A1D0C001B20F6 /* player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
+		D0F8CC39245A1D0C001B20F6 /* player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
+		D0F8CC3B245A1D1A001B20F6 /* bullet.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bullet.cpp; sourceTree = "<group>"; };
+		D0F8CC3C245A1D1A001B20F6 /* bullet.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = bullet.hpp; sourceTree = "<group>"; };
+		D0F8CC3E245A1D34001B20F6 /* rectObj.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = rectObj.cpp; sourceTree = "<group>"; };
+		D0F8CC3F245A1D34001B20F6 /* rectObj.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = rectObj.hpp; sourceTree = "<group>"; };
+		D0F8CC41245A2410001B20F6 /* platform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = platform.cpp; sourceTree = "<group>"; };
+		D0F8CC42245A2410001B20F6 /* platform.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = platform.hpp; sourceTree = "<group>"; };
+		D0F8CC44245A2420001B20F6 /* background.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = background.cpp; sourceTree = "<group>"; };
+		D0F8CC45245A2420001B20F6 /* background.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = background.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +80,19 @@
 			children = (
 				D065355C2453714600EA8575 /* ResourcePath.mm */,
 				D065355E2453714600EA8575 /* ResourcePath.hpp */,
-				D065355F2453714600EA8575 /* main.cpp */,
 				D06535612453714600EA8575 /* Resources */,
 				D065355A2453714600EA8575 /* Supporting Files */,
+				D065355F2453714600EA8575 /* main.cpp */,
+				D0F8CC38245A1D0C001B20F6 /* player.cpp */,
+				D0F8CC39245A1D0C001B20F6 /* player.hpp */,
+				D0F8CC3B245A1D1A001B20F6 /* bullet.cpp */,
+				D0F8CC3C245A1D1A001B20F6 /* bullet.hpp */,
+				D0F8CC3E245A1D34001B20F6 /* rectObj.cpp */,
+				D0F8CC3F245A1D34001B20F6 /* rectObj.hpp */,
+				D0F8CC41245A2410001B20F6 /* platform.cpp */,
+				D0F8CC42245A2410001B20F6 /* platform.hpp */,
+				D0F8CC44245A2420001B20F6 /* background.cpp */,
+				D0F8CC45245A2420001B20F6 /* background.hpp */,
 			);
 			path = BattleRoyale;
 			sourceTree = "<group>";
@@ -77,10 +108,13 @@
 		D06535612453714600EA8575 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D06535622453714600EA8575 /* cute_image.jpg */,
-				D06535642453714600EA8575 /* nice_music.ogg */,
-				D06535662453714600EA8575 /* sansation.ttf */,
-				D06535682453714600EA8575 /* icon.png */,
+				D06535702453715900EA8575 /* Bullet.png */,
+				D06535712453715900EA8575 /* Soldier.png */,
+				D06535722453715900EA8575 /* Platform-Full.png */,
+				D06535732453715900EA8575 /* GamescreenGimp.xcf */,
+				D06535742453715900EA8575 /* Background.png */,
+				D06535752453715900EA8575 /* Platform-Mid.png */,
+				D06535762453715900EA8575 /* Platform-Small.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -143,10 +177,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D06535692453714600EA8575 /* icon.png in Resources */,
-				D06535672453714600EA8575 /* sansation.ttf in Resources */,
-				D06535652453714600EA8575 /* nice_music.ogg in Resources */,
-				D06535632453714600EA8575 /* cute_image.jpg in Resources */,
+				D065357A2453715900EA8575 /* GamescreenGimp.xcf in Resources */,
+				D065357C2453715900EA8575 /* Platform-Mid.png in Resources */,
+				D06535782453715900EA8575 /* Soldier.png in Resources */,
+				D06535772453715900EA8575 /* Bullet.png in Resources */,
+				D065357D2453715900EA8575 /* Platform-Small.png in Resources */,
+				D065357B2453715900EA8575 /* Background.png in Resources */,
+				D06535792453715900EA8575 /* Platform-Full.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +192,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		D06535552453714600EA8575 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -166,9 +203,9 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "# This shell script simply copies required SFML dylibs/frameworks into the application bundle frameworks folder.\n# If you're using static libraries (which is not recommended) you should remove this script from your project.\n\n# SETTINGS\nSFML_DEPENDENCIES_INSTALL_PREFIX=\"/Users/SFML/Desktop/packaging/tmp/install/Library/Frameworks\"\nCMAKE_INSTALL_FRAMEWORK_PREFIX=\"/Users/SFML/Desktop/packaging/tmp/install/Library/Frameworks\"\nCMAKE_INSTALL_LIB_PREFIX=\"/Users/SFML/Desktop/packaging/tmp/install/Library/Frameworks/lib\"\nFRAMEWORKS_FULL_PATH=\"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/\"\n\n# Are we building a project that uses frameworks or dylibs?\ncase \"$SFML_BINARY_TYPE\" in\n    DYLIBS)\n        frameworks=\"false\"\n        ;;\n    *)\n        frameworks=\"true\"\n        ;;\nesac\n\n# Echoes to stderr\nerror () # $* message to display\n{\n    echo $* 1>&2\n    exit 2\n}\n\nassert () # $1 is a boolean, $2...N is an error message\n{\n    if [ $# -lt 2 ]\n    then\n        error \"Internal error in assert: not enough args\"\n    fi\n\n    if [ $1 -ne 0 ]\n    then\n        shift\n        error \"$*\"\n    fi\n}\n\nforce_remove () # $@ is some paths\n{\n    test $# -ge 1\n    assert $? \"force_remove() requires at least one parameter\"\n    rm -fr $@\n    assert $? \"couldn't remove $@\"\n}\n\ncopy () # $1 is a source, $2 is a destination\n{\n    test $# -eq 2\n    assert $? \"copy() requires two parameters\"\n    ditto \"$1\" \"$2\"\n    assert $? \"couldn't copy $1 to $2\"\n}\n\nrequire () # $1 is a SFML module like 'system' or 'audio'\n{\n    dest=\"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/\"\n\n    if [ -z \"$1\" ]\n    then\n        error \"require() requires one parameter!\"\n    else\n        # clean potentially old stuff\n        force_remove \"$dest/libsfml-$1\"*\n        force_remove \"$dest/sfml-$1.framework\"\n\n        # copy SFML libraries\n        if [ \"$frameworks\" = \"true\" ]\n        then\n            source=\"$CMAKE_INSTALL_FRAMEWORK_PREFIX/sfml-$1.framework\"\n            target=\"sfml-$1.framework\"\n        elif [ \"$SFML_LINK_DYLIBS_SUFFIX\" = \"-d\" ]\n        then\n            source=\"$CMAKE_INSTALL_LIB_PREFIX/libsfml-$1-d.dylib\"\n            target=\"`readlink $source`\"\n        else\n            source=\"$CMAKE_INSTALL_LIB_PREFIX/libsfml-$1.dylib\"\n            target=\"`readlink $source`\"\n        fi\n\n        copy \"$source\" \"$dest/$target\"\n\n        # copy extra dependencies\n        if [ \"$1\" = \"audio\" ]\n        then\n            # copy \"FLAC\" \"ogg\" \"vorbis\" \"vorbisenc\" \"vorbisfile\" \"OpenAL\" frameworks too\n            for f in \"FLAC\" \"ogg\" \"vorbis\" \"vorbisenc\" \"vorbisfile\" \"OpenAL\"\n            do\n                copy \"$SFML_DEPENDENCIES_INSTALL_PREFIX/$f.framework\" \"$dest/$f.framework\"\n            done\n        elif [ \"$1\" = \"graphics\" ]\n        then\n            copy \"$SFML_DEPENDENCIES_INSTALL_PREFIX/freetype.framework\" \"$dest/freetype.framework\"\n        fi\n    fi\n}\n\nif [ -n \"$SFML_SYSTEM\" ]\nthen\n    require \"system\"\nfi\n\nif [ -n \"$SFML_AUDIO\" ]\nthen\n    require \"audio\"\nfi\n\nif [ -n \"$SFML_NETWORK\" ]\nthen\n    require \"network\"\nfi\n\nif [ -n \"$SFML_WINDOW\" ]\nthen\n    require \"window\"\nfi\n\nif [ -n \"$SFML_GRAPHICS\" ]\nthen\n    require \"graphics\"\nfi\n\n                ";
+			shellScript = "# This shell script simply copies required SFML dylibs/frameworks into the application bundle frameworks folder.\n# If you're using static libraries (which is not recommended) you should remove this script from your project.\n\n# SETTINGS\nSFML_DEPENDENCIES_INSTALL_PREFIX=\"/Users/SFML/Desktop/packaging/tmp/install/Library/Frameworks\"\nCMAKE_INSTALL_FRAMEWORK_PREFIX=\"/Users/SFML/Desktop/packaging/tmp/install/Library/Frameworks\"\nCMAKE_INSTALL_LIB_PREFIX=\"/Users/SFML/Desktop/packaging/tmp/install/Library/Frameworks/lib\"\nFRAMEWORKS_FULL_PATH=\"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/\"\n\n# Are we building a project that uses frameworks or dylibs?\ncase \"$SFML_BINARY_TYPE\" in\n    DYLIBS)\n        frameworks=\"false\"\n        ;;\n    *)\n        frameworks=\"true\"\n        ;;\nesac\n\n# Echoes to stderr\nerror () # $* message to display\n{\n    echo $* 1>&2\n    exit 2\n}\n\nassert () # $1 is a boolean, $2...N is an error message\n{\n    if [ $# -lt 2 ]\n    then\n        error \"Internal error in assert: not enough args\"\n    fi\n\n    if [ $1 -ne 0 ]\n    then\n        shift\n        error \"$*\"\n    fi\n}\n\nforce_remove () # $@ is some paths\n{\n    test $# -ge 1\n    assert $? \"force_remove() requires at least one parameter\"\n    rm -fr $@\n    assert $? \"couldn't remove $@\"\n}\n\ncopy () # $1 is a source, $2 is a destination\n{\n    test $# -eq 2\n    assert $? \"copy() requires two parameters\"\n    ditto \"$1\" \"$2\"\n    assert $? \"couldn't copy $1 to $2\"\n}\n\nrequire () # $1 is a SFML module like 'system' or 'audio'\n{\n    dest=\"$BUILT_PRODUCTS_DIR/$FRAMEWORKS_FOLDER_PATH/\"\n\n    if [ -z \"$1\" ]\n    then\n        error \"require() requires one parameter!\"\n    else\n        # clean potentially old stuff\n        force_remove \"$dest/libsfml-$1\"*\n        force_remove \"$dest/sfml-$1.framework\"\n\n        # copy SFML libraries\n        if [ \"$frameworks\" = \"true\" ]\n        then\n            source=\"$CMAKE_INSTALL_FRAMEWORK_PREFIX/sfml-$1.framework\"\n            target=\"sfml-$1.framework\"\n        elif [ \"$SFML_LINK_DYLIBS_SUFFIX\" = \"-d\" ]\n        then\n            source=\"$CMAKE_INSTALL_LIB_PREFIX/libsfml-$1-d.dylib\"\n            target=\"`readlink $source`\"\n        else\n            source=\"$CMAKE_INSTALL_LIB_PREFIX/libsfml-$1.dylib\"\n            target=\"`readlink $source`\"\n        fi\n\n        copy \"$source\" \"$dest/$target\"\n\n        # copy extra dependencies\n        if [ \"$1\" = \"audio\" ]\n        then\n            # copy \"FLAC\" \"ogg\" \"vorbis\" \"vorbisenc\" \"vorbisfile\" \"OpenAL\" frameworks too\n            for f in \"FLAC\" \"ogg\" \"vorbis\" \"vorbisenc\" \"vorbisfile\" \"OpenAL\"\n            do\n                copy \"$SFML_DEPENDENCIES_INSTALL_PREFIX/$f.framework\" \"$dest/$f.framework\"\n            done\n        elif [ \"$1\" = \"graphics\" ]\n        then\n            copy \"$SFML_DEPENDENCIES_INSTALL_PREFIX/freetype.framework\" \"$dest/freetype.framework\"\n        fi\n    fi\n}\n\nif [ -n \"$SFML_SYSTEM\" ]\nthen\n    require \"system\"\nfi\n\nif [ -n \"$SFML_AUDIO\" ]\nthen\n    require \"audio\"\nfi\n\nif [ -n \"$SFML_NETWORK\" ]\nthen\n    require \"network\"\nfi\n\nif [ -n \"$SFML_WINDOW\" ]\nthen\n    require \"window\"\nfi\n\nif [ -n \"$SFML_GRAPHICS\" ]\nthen\n    require \"graphics\"\nfi\n\n                \n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -178,7 +215,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D06535602453714600EA8575 /* main.cpp in Sources */,
+				D0F8CC40245A1D34001B20F6 /* rectObj.cpp in Sources */,
 				D065355D2453714600EA8575 /* ResourcePath.mm in Sources */,
+				D0F8CC3A245A1D0C001B20F6 /* player.cpp in Sources */,
+				D0F8CC43245A2410001B20F6 /* platform.cpp in Sources */,
+				D0F8CC46245A2420001B20F6 /* background.cpp in Sources */,
+				D0F8CC3D245A1D1A001B20F6 /* bullet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
