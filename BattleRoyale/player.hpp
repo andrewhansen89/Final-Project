@@ -29,7 +29,7 @@ public:
     bool checkFeet(std::vector<Platform*> p) {
         // Check platforms and make sure that the player is between the length of the platform, and right on top of it
         for(auto it: p) {
-            if (this->intersects(it->getSprite()) && this->getBottom() > it->getTop())
+            if (this->intersects(it->getSprite()) && this->getBottom() >= it->getTop() - 1)
                 return true;
         }
         return false;

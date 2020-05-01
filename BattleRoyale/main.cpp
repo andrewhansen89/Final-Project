@@ -53,7 +53,7 @@ int main(int, char const**) {
     float gravitySpeed = 0;
     const int bulletSpeed = 5;
     bool isJumping = false;
-    const float jumpHeight = 150.f;
+    const float jumpHeight = 10.f;
     
 
     sf::Clock clock;
@@ -62,7 +62,7 @@ int main(int, char const**) {
     
     sf::Vector2f currentVelocity;
     sf::Vector2f direction;
-    float maxVelocity = 10;
+    float maxVelocity = 8.f;
     float acceleration = 2.f;
     float drag = 0.5;
     
@@ -71,17 +71,19 @@ int main(int, char const**) {
 
         // Create the event object
         sf::Event event;
-
+        dt = clock.restart().asSeconds();
+        std::cout << "dt: " << dt << std::endl;
         // While there are events going on
         while (window.pollEvent(event)) {
             
-            dt = clock.restart().asSeconds();
             direction = sf::Vector2f(0, 0);
             
             if ((event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W) && isJumping == false) { // If the player presses W, jump.
-                player.move(sf::Vector2f(0, -jumpHeight));
                 isJumping = true;
                 gravitySpeed = 4;
+                direction.y = -1.f;
+                if (currentVelocity.y > -jumpHeight)
+                    currentVelocity.y += jumpHeight * direction.y * dt * multiplier;
             }
             
             if (event.type == sf::Event::KeyPressed && event.key.code ==  sf::Keyboard::D) { // If the player presses D then move right
@@ -90,7 +92,7 @@ int main(int, char const**) {
                 player.setIsFlipped(isFlipped);
                 direction.x = 1.f;
                 if (currentVelocity.x < maxVelocity)
-                    currentVelocity.x += acceleration * direction.x;
+                    currentVelocity.x += acceleration * direction.x * dt * multiplier;
     
             }
             
@@ -100,7 +102,7 @@ int main(int, char const**) {
                 player.setIsFlipped(isFlipped);
                 direction.x = -1.f;
                 if (currentVelocity.x > -maxVelocity)
-                    currentVelocity.x += acceleration * direction.x;
+                    currentVelocity.x += acceleration * direction.x * dt * multiplier;
             }
 
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) {
@@ -121,8 +123,6 @@ int main(int, char const**) {
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
                 window.close();
             // If the player releases a key, then stop the jumping.
-            
-            //Drag for X
             if(currentVelocity.x > 0.f) {
                 currentVelocity.x -= drag * dt * multiplier;
                 if (currentVelocity.x < 0.f) {
@@ -148,13 +148,13 @@ int main(int, char const**) {
                     currentVelocity.y = 0.f;
                 }
             }
-
-            player.move(sf::Vector2f(currentVelocity.x * dt * multiplier, 0));
         }
+    
+        player.move(sf::Vector2f(currentVelocity.x * dt * multiplier, currentVelocity.y * dt * multiplier));
         
         //Gravity Logic: If the player isn't on a platform, allow gravity, If a player is on a platform, allow jumping and stop gravity
         if (player.checkFeet(plats) == false && player.getY() < groundHeight){
-            gravitySpeed = 4;
+            gravitySpeed = 6;
             player.move(sf::Vector2f(0, gravitySpeed));
             isJumping = false;
         }
