@@ -38,149 +38,36 @@ int main(int, char const**) {
 
     // Create a player and an enemy
     Player player, enemy;
-    bool isFlipped = false;
-
-    // Create vector to store bullets and set shooting property to false.
-    std::vector<Bullet> bulletVec;
-    bool isFiring = false;
-    
-    // Create Gravity's Properties
-    const int groundHeight = 550;
-    float gravitySpeed = 0;
-    const int bulletSpeed = 6;
-    bool isJumping = false;
-    const float jumpHeight = 150.f;
-    
+        
     // Clock properties
     sf::Clock clock;
     float dt;
-    float multiplier = 60.f;
-    
-    // Movement physics
-    sf::Vector2f currentVelocity;
-    sf::Vector2f direction;
-    float maxVelocity = 8.f;
-    float acceleration = 2.f;
-    float drag = 0.5;
-
 
     while (window.isOpen()) { // game loop
 
         // Create the event object
         sf::Event event;
         dt = clock.restart().asSeconds();
-        bool isValid = false;
         
         // While there are events going on
         while (window.pollEvent(event)) {
 
-            direction = sf::Vector2f(0, 0);
-
-            if ((event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W) && isJumping == false) { // If the player presses W, jump.
-                isJumping = true;
-                gravitySpeed = 4;
-                direction.y = -1.f;
-                currentVelocity.y = -jumpHeight;
-            }
-            if (event.type == sf::Event::KeyPressed && event.key.code ==  sf::Keyboard::D) { // If the player presses D then move right
-                player.flipRight();
-                isFlipped = false;
-                player.setIsFlipped(isFlipped);
-                direction.x = 1.f;
-                if (currentVelocity.x < maxVelocity)
-                    currentVelocity.x += acceleration * direction.x * dt * multiplier;
-            }
-            if (event.type == sf::Event::KeyPressed && event.key.code ==  sf::Keyboard::A) { // If the player presses A, move left
-                player.flipLeft();
-                isFlipped = true;
-                player.setIsFlipped(isFlipped);
-                direction.x = -1.f;
-                if (currentVelocity.x > -maxVelocity)
-                    currentVelocity.x += acceleration * direction.x * dt * multiplier;
-            }
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) {
-                isFiring = true;
-            }
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R ) {
-                if (enemy.getIsDead())
-                    enemy.respawn();
-                else if (player.getIsDead())
-                    player.respawn();
-            }
-            if (event.type == sf::Event::Closed) // If the window is closed, stop running the game
-                window.close();
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) // If the player presses escape, stop running the game
-                window.close();
-            
-            // Drag physics
-            if(currentVelocity.x > 0.f) {
-                currentVelocity.x -= drag * dt * multiplier;
-                if (currentVelocity.x < 0.f)
-                    currentVelocity.x = 0.f;
-            }
-            else if (currentVelocity.x < 0.f) {
-                currentVelocity.x += drag * dt * multiplier;
-                if (currentVelocity.x > 0.f)
-                    currentVelocity.x = 0.f;
-            }
-            if(currentVelocity.y > 0.f) {
-                currentVelocity.y -= drag * dt * multiplier;
-                if (currentVelocity.y < 0.f)
-                    currentVelocity.y = 0.f;
-            }
-            else if (currentVelocity.y < 0.f) {
-                currentVelocity.y += drag * dt * multiplier;
-                if (currentVelocity.y > 0.f)
-                    currentVelocity.y = 0.f;
-            }
+            player.update(dt, event, window);
         }
         //Player movement
-        player.move(sf::Vector2f(currentVelocity.x * dt * multiplier, currentVelocity.y));
-        currentVelocity.y = 0.f;
+        player.move(dt);
 
         //Gravity Logic: If the player isn't on a platform, allow gravity, If a player is on a platform, allow jumping and stop gravity
-        if (player.checkFeet(plats) == false && player.getY() < groundHeight){
-            gravitySpeed = 4;
-            player.move(sf::Vector2f(0, gravitySpeed));
-            isJumping = false;
-        }
-        else {
-            isJumping = false;
-            gravitySpeed = 0;
-        }
-
-        int counter = 0; // Bullet Logic
-        for (int i = 0; i < bulletVec.size(); i++) {
-            if (enemy.checkColl(bulletVec.at(i))) {
-                bulletVec.erase(bulletVec.begin() + i);
-            }
-        }
-
+        player.allowGravity(plats);
+        
         window.clear();
-
-        // Drawing Background
-        bg.draw(window);
-        // Drawing Platforms
-        for (auto it: plats) {
+        bg.draw(window); // Drawing Background
+        for (auto it: plats) { // Drawing Platforms
             it->draw(window);
         }
         // Creating new bullet
-        if (isFiring == true) {
-            Bullet newBullet(sf::Vector2f(player.getX(), player.getY() + 10), isFlipped);
-            bulletVec.push_back(newBullet);
-            isFiring = false;
-        }
-        // Looping through the bullet vector and updating all of them
-        for (int i = 0; i < bulletVec.size(); i++) {
-            bulletVec[i].draw(window);
-            bulletVec[i].update(bulletSpeed);
-        }
-        // Checking for collisions
-        for (int i = 0; i < bulletVec.size(); i++) {
-            if(enemy.checkColl(bulletVec[i]))
-                player.setIsDead(true);
-        }
-
+        player.checkBullets(enemy, window);
+        
         player.draw(window);
         enemy.draw(window);
         window.display();

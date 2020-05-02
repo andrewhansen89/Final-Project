@@ -18,32 +18,20 @@ public:
     // Moves the player based on the vector's distance
     virtual void move( sf::Vector2f distance) { sprite.move(distance); }
     
-    void getLength() { return size.x; }
-    
-    void getWidth() { return size.y; }
-    
     void flipRight() { sprite.setTextureRect(sf::IntRect(0, 0, size.x, size.y)); }
-       
     void flipLeft() { sprite.setTextureRect(sf::IntRect(size.x, 0, -size.x, size.y)); }
-    
-    void setIsFlipped(bool i) { isFlipped = i; }
-    
-    int getY() { return sprite.getPosition().y; }
-    
+    void getLength() { return size.x; }
+    void getWidth() { return size.y; }
     int getX();
     int getRight() { return sprite.getPosition().x + size.x; }
     int getLeft() { return sprite.getPosition().x; }
     int getTop() { return sprite.getPosition().y; }
     int getBottom() { return sprite.getPosition().y + size.y; }
     void setPos(sf::Vector2f newPos) { sprite.setPosition(newPos); }
-    
     sf::Vector2f getPos() { return pos; }
-    
-    // virtual void update(float dt) = 0;
-    void draw(sf::RenderWindow &window) { window.draw(sprite); }
-    
     sf::Sprite getSprite() { return sprite; }
     
+    virtual void draw(sf::RenderWindow &window) { window.draw(sprite); }
     bool intersects(sf::Sprite s) { return sprite.getGlobalBounds().intersects(s.getGlobalBounds()); }
 };
 

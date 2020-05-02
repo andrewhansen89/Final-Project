@@ -9,13 +9,18 @@
 class Bullet : public RectObject{
 private:
     bool isFlipped;
+    int bulletSpeed;
 public:
-    Bullet(sf::Vector2f p, bool i) : RectObject("Bullet.png", p) { isFlipped = i;}
+    Bullet(sf::Vector2f p, bool i) : RectObject("Bullet.png", p) {
+        bulletSpeed = 6;
+        isFlipped = i;
+        
+    }
 
-    void update(int speed) {
+    void update() {
         if (!isFlipped)
-            this->sprite.move(speed, 0);
+            this->sprite.move(bulletSpeed, 0);
         else
-            this->sprite.move(-speed, 0);
+            this->sprite.move(-bulletSpeed, 0);
     }
 };
