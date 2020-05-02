@@ -20,8 +20,8 @@ public:
     
     void flipRight() { sprite.setTextureRect(sf::IntRect(0, 0, size.x, size.y)); }
     void flipLeft() { sprite.setTextureRect(sf::IntRect(size.x, 0, -size.x, size.y)); }
-    void getLength() { return size.x; }
-    void getWidth() { return size.y; }
+    int getLength() { return size.x; }
+    int getWidth() { return size.y; }
     int getX();
     int getRight() { return sprite.getPosition().x + size.x; }
     int getLeft() { return sprite.getPosition().x; }

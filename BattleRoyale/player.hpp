@@ -21,21 +21,11 @@ private:
     int groundHeight;
     float gravitySpeed;
     float multiplier;
+    int timesJumped;
+    int maxTimesJumped;
 public:
     // Create the player
-    Player() : RectObject("Soldier.png", sf::Vector2f(rand() % 740 + 10, 550)) {
-        isDead = false;
-        isFiring = false;
-        isJumping = false;
-        jumpHeight = 150.f;
-        maxVelocity = 8.f;
-        acceleration = 2.f;
-        drag = 0.5;
-        groundHeight = 550;
-        gravitySpeed = 0;
-        multiplier = 60.f;
-
-    }
+    Player();
     bool getIsDead() { return isDead; }
     void setIsDead(bool d) { isDead = d; }
     bool checkColl(Bullet bullet); // Check if the player's collided with a bullet

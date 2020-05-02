@@ -1,5 +1,20 @@
 #include "player.hpp"
 
+Player::Player() : RectObject("Soldier.png", sf::Vector2f(rand() % 740 + 10, 550)) {
+    isDead = false;
+    isFiring = false;
+    isJumping = false;
+    jumpHeight = 150.f;
+    maxVelocity = 7.f;
+    acceleration = 2.f;
+    drag = 0.9f;
+    groundHeight = 550;
+    gravitySpeed = 0;
+    multiplier = 60.f;
+    timesJumped = 0;
+    maxTimesJumped = 2;
+}
+
 bool Player::checkColl(Bullet bullet) {
     if (bullet.intersects(this->getSprite())) { // if the sprites collide
         this->move(sf::Vector2f(0,10000)); // move the player off of the map coordinates
@@ -22,6 +37,11 @@ void Player::move(sf::Vector2f distance) {
     
     if ((this->getLeft() > 0 && this->getRight() < 800)&(this->getBottom() > 0 && this->getTop() < 600))
         sprite.move(distance);
+    else if (this->getLeft() < 0)
+        this->setPos(sf::Vector2f(0,this->getTop()));
+    else if (this->getRight() > 800)
+        this->setPos(sf::Vector2f(800 - this->getLength(),this->getTop()));
+        
 }
 
 void Player::move(float dt) {
@@ -33,8 +53,9 @@ void Player::move(float dt) {
 void Player::update(float dt, sf::Event e, sf::RenderWindow &w) {
     
     direction = sf::Vector2f(0, 0);
-    if ((e.type == sf::Event::KeyPressed && e.key.code == sf::Keyboard::W) && isJumping == false) { // If the player presses W, jump.
+    if ((e.type == sf::Event::KeyPressed && e.key.code == sf::Keyboard::W) && (isJumping == false && timesJumped < maxTimesJumped)) { // If the player presses W, jump.
         isJumping = true;
+        timesJumped++;
         gravitySpeed = 4;
         direction.y = -1.f;
         currentVelocity.y = -jumpHeight;
@@ -99,6 +120,7 @@ void Player::allowGravity(std::vector<Platform*> p) {
     else {
         isJumping = false;
         gravitySpeed = 0;
+        timesJumped = 0;
     }
 }
 
