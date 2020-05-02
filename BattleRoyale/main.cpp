@@ -55,23 +55,78 @@ int main(int, char const**) {
     plats.push_back(new MidPlatform(sf::Vector2f(600, 300)));
     plats.push_back(new FullPlatform(sf::Vector2f(250, 200)));
 
+<<<<<<< HEAD
     // Create a player and an enemy
     Player player, player2;
+=======
+    // Create Gravity's Properties
+    const int groundHeight = 550;
+    float gravitySpeed = 0;
+    const int bulletSpeed = 5;
+    bool isJumping = false;
+    const float jumpHeight = 150.f;
+    
+>>>>>>> parent of a6af7a6... Updated project
 
     // Clock properties
     sf::Clock clock;
     float dt;
+<<<<<<< HEAD
 
 
     sf::Vector2f prevPos, player2Pos;
     socket.setBlocking(false);
     bool update = false;
+=======
+    float multiplier = 60.f;
+    
+    sf::Vector2f currentVelocity;
+    sf::Vector2f direction;
+    float maxVelocity = 10;
+    float acceleration = 2.f;
+    float drag = 0.5;
+    
+>>>>>>> parent of a6af7a6... Updated project
 
     while (window.isOpen()) { // game loop
 
         // Create the event object
         sf::Event event;
+<<<<<<< HEAD
         dt = clock.restart().asSeconds();
+=======
+
+        // While there are events going on
+        while (window.pollEvent(event)) {
+            
+            dt = clock.restart().asSeconds();
+            direction = sf::Vector2f(0, 0);
+            
+            if ((event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W) && isJumping == false) { // If the player presses W, jump.
+                player.move(sf::Vector2f(0, -jumpHeight));
+                isJumping = true;
+                gravitySpeed = 4;
+            }
+            
+            if (event.type == sf::Event::KeyPressed && event.key.code ==  sf::Keyboard::D) { // If the player presses D then move right
+                player.flipRight();
+                isFlipped = false;
+                player.setIsFlipped(isFlipped);
+                direction.x = 1.f;
+                if (currentVelocity.x < maxVelocity)
+                    currentVelocity.x += acceleration * direction.x;
+    
+            }
+            
+            if (event.type == sf::Event::KeyPressed && event.key.code ==  sf::Keyboard::A) { // If the player presses A, move left
+                player.flipLeft();
+                isFlipped = true;
+                player.setIsFlipped(isFlipped);
+                direction.x = -1.f;
+                if (currentVelocity.x > -maxVelocity)
+                    currentVelocity.x += acceleration * direction.x;
+            }
+>>>>>>> parent of a6af7a6... Updated project
 
         // While there are events going on
         while (window.pollEvent(event))
@@ -85,7 +140,57 @@ int main(int, char const**) {
             // Lost focus and gained focus were added so that you only control the window
             // you're clicked on. Not both windows at the same time.
 
+<<<<<<< HEAD
             player.update(dt, event, window);
+=======
+            // If the window is closed, stop running the game
+            if (event.type == sf::Event::Closed)
+                window.close();
+            // If the player presses escape, stop running the game
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+                window.close();
+            // If the player releases a key, then stop the jumping.
+            
+            //Drag for X
+            if(currentVelocity.x > 0.f) {
+                currentVelocity.x -= drag * dt * multiplier;
+                if (currentVelocity.x < 0.f) {
+                    currentVelocity.x = 0.f;
+                }
+            }
+            else if (currentVelocity.x < 0.f) {
+                currentVelocity.x += drag * dt * multiplier;
+                if (currentVelocity.x > 0.f) {
+                    currentVelocity.x = 0.f;
+                }
+            }
+            // Drag for Y
+            if(currentVelocity.y > 0.f) {
+                currentVelocity.y -= drag * dt * multiplier;
+                if (currentVelocity.y < 0.f) {
+                    currentVelocity.y = 0.f;
+                }
+            }
+            else if (currentVelocity.y < 0.f) {
+                currentVelocity.y += drag * dt * multiplier;
+                if (currentVelocity.y > 0.f) {
+                    currentVelocity.y = 0.f;
+                }
+            }
+
+            player.move(sf::Vector2f(currentVelocity.x * dt * multiplier, 0));
+        }
+        
+        //Gravity Logic: If the player isn't on a platform, allow gravity, If a player is on a platform, allow jumping and stop gravity
+        if (player.checkFeet(plats) == false && player.getY() < groundHeight){
+            gravitySpeed = 4;
+            player.move(sf::Vector2f(0, gravitySpeed));
+            isJumping = false;
+        }
+        else {
+            isJumping = false;
+            gravitySpeed = 0;
+>>>>>>> parent of a6af7a6... Updated project
         }
 
         prevPos = player.getPos();
