@@ -36,6 +36,7 @@ bool Player::checkFeet(std::vector<Platform*> p) {
     return false;
 }
 
+<<<<<<< HEAD
 void Player::move(sf::Vector2f distance) { sprite.move(distance); }
 
 void Player::move(float dt) {
@@ -135,4 +136,10 @@ void Player::checkBullets(Player enemy, sf::RenderWindow &w) {
         if(this->checkColl(bulletVec[i], enemy))
             enemy.setIsDead(true);
     }
+=======
+void Player::move(sf::Vector2f distance) {
+    
+    if ((this->getX() + distance.x > 0 && this->getX() + distance.x < 800)&(this->getY() + distance.y > 0 && this->getY() + distance.y < 600))
+        sprite.move(distance);
+>>>>>>> parent of f22fa5c... finished consolidating code
 }

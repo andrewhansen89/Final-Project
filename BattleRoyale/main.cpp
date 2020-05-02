@@ -57,6 +57,7 @@ int main(int, char const**) {
 
 <<<<<<< HEAD
     // Create a player and an enemy
+<<<<<<< HEAD
     Player player, player2;
 =======
     // Create Gravity's Properties
@@ -87,6 +88,34 @@ int main(int, char const**) {
     float drag = 0.5;
     
 >>>>>>> parent of a6af7a6... Updated project
+=======
+    Player player, enemy;
+    bool isFlipped = false;
+
+    // Create vector to store bullets and set shooting property to false.
+    std::vector<Bullet> bulletVec;
+    bool isFiring = false;
+    
+    // Create Gravity's Properties
+    const int groundHeight = 550;
+    float gravitySpeed = 0;
+    const int bulletSpeed = 6;
+    bool isJumping = false;
+    const float jumpHeight = 150.f;
+    
+    // Clock properties
+    sf::Clock clock;
+    float dt;
+    float multiplier = 60.f;
+    
+    // Movement physics
+    sf::Vector2f currentVelocity;
+    sf::Vector2f direction;
+    float maxVelocity = 8.f;
+    float acceleration = 2.f;
+    float drag = 0.5;
+
+>>>>>>> parent of f22fa5c... finished consolidating code
 
     while (window.isOpen()) { // game loop
 
@@ -95,10 +124,15 @@ int main(int, char const**) {
 <<<<<<< HEAD
 <<<<<<< HEAD
         dt = clock.restart().asSeconds();
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> parent of a6af7a6... Updated project
 
+=======
+        bool isValid = false;
+        
+>>>>>>> parent of f22fa5c... finished consolidating code
         // While there are events going on
         while (window.pollEvent(event)) {
             
@@ -131,6 +165,7 @@ int main(int, char const**) {
             }
 >>>>>>> parent of a6af7a6... Updated project
 
+<<<<<<< HEAD
         // While there are events going on
         while (window.pollEvent(event))
         {
@@ -180,6 +215,71 @@ int main(int, char const**) {
                     currentVelocity.y = 0.f;
                 }
             }
+=======
+            direction = sf::Vector2f(0, 0);
+
+            if ((event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W) && isJumping == false) { // If the player presses W, jump.
+                isJumping = true;
+                gravitySpeed = 4;
+                direction.y = -1.f;
+                currentVelocity.y = -jumpHeight;
+            }
+            if (event.type == sf::Event::KeyPressed && event.key.code ==  sf::Keyboard::D) { // If the player presses D then move right
+                player.flipRight();
+                isFlipped = false;
+                player.setIsFlipped(isFlipped);
+                direction.x = 1.f;
+                if (currentVelocity.x < maxVelocity)
+                    currentVelocity.x += acceleration * direction.x * dt * multiplier;
+            }
+            if (event.type == sf::Event::KeyPressed && event.key.code ==  sf::Keyboard::A) { // If the player presses A, move left
+                player.flipLeft();
+                isFlipped = true;
+                player.setIsFlipped(isFlipped);
+                direction.x = -1.f;
+                if (currentVelocity.x > -maxVelocity)
+                    currentVelocity.x += acceleration * direction.x * dt * multiplier;
+            }
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) {
+                isFiring = true;
+            }
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R ) {
+                if (enemy.getIsDead())
+                    enemy.respawn();
+                else if (player.getIsDead())
+                    player.respawn();
+            }
+            if (event.type == sf::Event::Closed) // If the window is closed, stop running the game
+                window.close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) // If the player presses escape, stop running the game
+                window.close();
+            
+            // Drag physics
+            if(currentVelocity.x > 0.f) {
+                currentVelocity.x -= drag * dt * multiplier;
+                if (currentVelocity.x < 0.f)
+                    currentVelocity.x = 0.f;
+            }
+            else if (currentVelocity.x < 0.f) {
+                currentVelocity.x += drag * dt * multiplier;
+                if (currentVelocity.x > 0.f)
+                    currentVelocity.x = 0.f;
+            }
+            if(currentVelocity.y > 0.f) {
+                currentVelocity.y -= drag * dt * multiplier;
+                if (currentVelocity.y < 0.f)
+                    currentVelocity.y = 0.f;
+            }
+            else if (currentVelocity.y < 0.f) {
+                currentVelocity.y += drag * dt * multiplier;
+                if (currentVelocity.y > 0.f)
+                    currentVelocity.y = 0.f;
+            }
+        }
+        //Player movement
+        player.move(sf::Vector2f(currentVelocity.x * dt * multiplier, currentVelocity.y));
+        currentVelocity.y = 0.f;
+>>>>>>> parent of f22fa5c... finished consolidating code
 
             player.move(sf::Vector2f(currentVelocity.x * dt * multiplier, 0));
         }
@@ -193,6 +293,7 @@ int main(int, char const**) {
         else {
             isJumping = false;
             gravitySpeed = 0;
+<<<<<<< HEAD
 >>>>>>> parent of a6af7a6... Updated project
         }
 
@@ -232,11 +333,46 @@ int main(int, char const**) {
 
         bg.draw(window); // Drawing Background
         for (auto it : plats) { // Drawing Platforms
+=======
+        }
+
+        int counter = 0; // Bullet Logic
+        for (int i = 0; i < bulletVec.size(); i++) {
+            if (enemy.checkColl(bulletVec.at(i))) {
+                bulletVec.erase(bulletVec.begin() + i);
+            }
+        }
+
+        window.clear();
+
+        // Drawing Background
+        bg.draw(window);
+        // Drawing Platforms
+        for (auto it: plats) {
+>>>>>>> parent of f22fa5c... finished consolidating code
             it->draw(window);
         }
 
         // Creating new bullet
+<<<<<<< HEAD
         player.checkBullets(player2, window);
+=======
+        if (isFiring == true) {
+            Bullet newBullet(sf::Vector2f(player.getX(), player.getY() + 10), isFlipped);
+            bulletVec.push_back(newBullet);
+            isFiring = false;
+        }
+        // Looping through the bullet vector and updating all of them
+        for (int i = 0; i < bulletVec.size(); i++) {
+            bulletVec[i].draw(window);
+            bulletVec[i].update(bulletSpeed);
+        }
+        // Checking for collisions
+        for (int i = 0; i < bulletVec.size(); i++) {
+            if(enemy.checkColl(bulletVec[i]))
+                player.setIsDead(true);
+        }
+>>>>>>> parent of f22fa5c... finished consolidating code
 
         player.draw(window);
         player2.draw(window);

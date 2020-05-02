@@ -8,8 +8,8 @@
 
 class Player : public RectObject {
 private:
-    std::vector<Bullet> bulletVec;
     bool isDead;
+<<<<<<< HEAD
     bool isFiring;
     bool isJumping;
     float jumpHeight;
@@ -26,6 +26,11 @@ private:
 public:
     // Create the player
     Player();
+=======
+public:
+    // Create the player and draw it to the window
+    Player() : RectObject("Soldier.png", sf::Vector2f(rand() % 740 + 10, 550)) { isDead = false; }
+>>>>>>> parent of f22fa5c... finished consolidating code
     bool getIsDead() { return isDead; }
     void setIsDead(bool d) { isDead = d; }
 <<<<<<< HEAD
@@ -33,6 +38,7 @@ public:
     void respawn() { this->setPos(sf::Vector2f(rand() % 740 + 10, 550)); }
     bool checkFeet(std::vector<Platform*> p); // Returns true if the player is on a platform, false if the player is not
     void move(sf::Vector2f distance);
+<<<<<<< HEAD
     void move(float dt);
     void update(float dt, sf::Event e, sf::RenderWindow &w);
     void checkDrag(float dt);
@@ -59,4 +65,6 @@ public:
         return false;
     }
 >>>>>>> parent of a6af7a6... Updated project
+=======
+>>>>>>> parent of f22fa5c... finished consolidating code
 };
