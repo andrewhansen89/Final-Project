@@ -7,7 +7,7 @@ Player::Player() : RectObject("Soldier.png", sf::Vector2f(rand() % 740 + 10, 550
     jumpHeight = 150.f;
     maxVelocity = 7.f;
     acceleration = 2.f;
-    drag = 0.9f;
+    drag = 0.5f;
     groundHeight = 550;
     gravitySpeed = 0;
     multiplier = 60.f;
@@ -15,9 +15,10 @@ Player::Player() : RectObject("Soldier.png", sf::Vector2f(rand() % 740 + 10, 550
     maxTimesJumped = 2;
 }
 
-bool Player::checkColl(Bullet bullet) {
-    if (bullet.intersects(this->getSprite())) { // if the sprites collide
-        this->move(sf::Vector2f(0,10000)); // move the player off of the map coordinates
+bool Player::checkColl(Bullet bullet, Player enemy) {
+
+    if (enemy.intersects(bullet.getSprite())) { // if the sprites collide
+        enemy.move(sf::Vector2f(10000,10000)); // move the player off of the map coordinates
         return true;
         std::cout << "Hit target : ";
     }
@@ -27,22 +28,15 @@ bool Player::checkColl(Bullet bullet) {
 bool Player::checkFeet(std::vector<Platform*> p) {
    
     for(auto it: p) { // for all of the elements in the vector
-        if (this->intersects(it->getSprite()) && this->getBottom() >= it->getTop() - 1)
+        if (this->intersects(it->getSprite()) && this->getBottom() >= it->getTop() - 1) {
+            gravitySpeed = 0;
             return true;
+        }
     }
     return false;
 }
 
-void Player::move(sf::Vector2f distance) {
-    
-    if ((this->getLeft() > 0 && this->getRight() < 800)&(this->getBottom() > 0 && this->getTop() < 600))
-        sprite.move(distance);
-    else if (this->getLeft() < 0)
-        this->setPos(sf::Vector2f(0,this->getTop()));
-    else if (this->getRight() > 800)
-        this->setPos(sf::Vector2f(800 - this->getLength(),this->getTop()));
-        
-}
+void Player::move(sf::Vector2f distance) { sprite.move(distance); }
 
 void Player::move(float dt) {
     
@@ -138,7 +132,7 @@ void Player::checkBullets(Player enemy, sf::RenderWindow &w) {
     }
     // Checking for collisions
     for (int i = 0; i < bulletVec.size(); i++) {
-        if(enemy.checkColl(bulletVec[i]))
+        if(this->checkColl(bulletVec[i], enemy))
             enemy.setIsDead(true);
     }
 }

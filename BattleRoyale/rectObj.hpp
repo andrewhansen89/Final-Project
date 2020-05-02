@@ -32,7 +32,7 @@ public:
     sf::Sprite getSprite() { return sprite; }
     
     virtual void draw(sf::RenderWindow &window) { window.draw(sprite); }
-    bool intersects(sf::Sprite s) { return sprite.getGlobalBounds().intersects(s.getGlobalBounds()); }
+    bool intersects(sf::Sprite s) { sprite.getGlobalBounds().intersects(s.getGlobalBounds()); }
 };
 
 

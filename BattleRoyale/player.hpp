@@ -28,7 +28,7 @@ public:
     Player();
     bool getIsDead() { return isDead; }
     void setIsDead(bool d) { isDead = d; }
-    bool checkColl(Bullet bullet); // Check if the player's collided with a bullet
+    bool checkColl(Bullet bullet, Player enemy); // Check if the player's collided with a bullet
     void respawn() { this->setPos(sf::Vector2f(rand() % 740 + 10, 550)); }
     bool checkFeet(std::vector<Platform*> p); // Returns true if the player is on a platform, false if the player is not
     void move(sf::Vector2f distance);
