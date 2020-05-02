@@ -93,8 +93,11 @@ int main(int, char const**) {
         // Create the event object
         sf::Event event;
 <<<<<<< HEAD
+<<<<<<< HEAD
         dt = clock.restart().asSeconds();
 =======
+=======
+>>>>>>> parent of a6af7a6... Updated project
 
         // While there are events going on
         while (window.pollEvent(event)) {
